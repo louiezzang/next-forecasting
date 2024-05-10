@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 
 VERSION = "0.0.1"
-DESCRIPTION = "temporal-fusion-transformer"
+DESCRIPTION = "Nextmining Forecasting"
 
 setup(
     name="nextmining-forecasting",
@@ -16,7 +16,7 @@ setup(
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     author="unknown",
-    # author_email="<louiezzang@gmail.com>",
+    # author_email="<dev@nextmining.com>",
     package_dir={"": "src"},
     # url="https://github.com/louiezzang/nextmining-forecasting",
     keywors=[
