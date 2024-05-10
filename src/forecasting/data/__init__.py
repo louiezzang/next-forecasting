@@ -1,1 +1,1 @@
-from timeseries import *
+from .timeseries import TimeSeriesDataset
