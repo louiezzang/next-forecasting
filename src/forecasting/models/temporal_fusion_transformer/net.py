@@ -1,7 +1,7 @@
 from torch import nn
 import torch
 
-from .modules import *
+from .submodules import *
 
 
 class TemporalFusionTransformer(nn.Module):
