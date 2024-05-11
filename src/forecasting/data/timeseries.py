@@ -67,7 +67,8 @@ class TimeSeriesDataset(Dataset):
             "outputs": self.outputs[index], 
             "active_entries": np.ones_like(self.outputs[index]), 
             "time": self.time[index],
-            "identifier": self.entity[index]
+            "identifier": self.entity[index],
+            "index": int(self.inputs[index, 0, -1]) 
         }
 
         return s
