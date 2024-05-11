@@ -10,23 +10,23 @@ logger = logging.getLogger("DeepAR.Net")
 
 
 class DeepAR(nn.Module):
-    def __init__(self, parameters):
+    def __init__(self, params):
         """
         A recurrent network that predicts the future values of a time-dependent variable based on
         past inputs and covariates.
         """
         super(DeepAR, self).__init__()
-        self.parameters = parameters
-        self.device = parameters["device"]
-        self.num_class = parameters["num_class"]
-        self.embedding_dim = parameters["embedding_dim"]
-        self.cov_dim = parameters["cov_dim"]
-        self.lstm_hidden_dim = parameters["lstm_hidden_dim"]
-        self.lstm_layers = parameters["lstm_layers"]
-        self.lstm_dropout = parameters["lstm_dropout"]
-        self.sample_times = parameters["sample_times"]
-        self.predict_steps = parameters["predict_steps"]
-        self.predict_start = parameters["predict_start"]
+        # self.params = params
+        self.device = params["device"]
+        self.num_class = params["num_class"]
+        self.embedding_dim = params["embedding_dim"]
+        self.cov_dim = params["cov_dim"]
+        self.lstm_hidden_dim = params["lstm_hidden_dim"]
+        self.lstm_layers = params["lstm_layers"]
+        self.lstm_dropout = params["lstm_dropout"]
+        self.sample_times = params["sample_times"]
+        self.predict_steps = params["predict_steps"]
+        self.predict_start = params["predict_start"]
 
         self.embedding = nn.Embedding(self.num_class, self.embedding_dim)
 
