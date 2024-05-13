@@ -48,18 +48,21 @@ class TimeSeriesDataset(Dataset):
             time.append(np.stack([t[i:data_time_steps - (decoder_steps - 1) + i, :] for i in range(decoder_steps)], axis=1))
 
         self.inputs = np.concatenate(inputs, axis=0)
-        self.outputs = np.concatenate(outputs, axis=0)[:, encoder_steps:, :]
+        if decoder_steps > encoder_steps: # For Temporal Fusion Transformer
+            self.outputs = np.concatenate(outputs, axis=0)[:, encoder_steps:, :]
+        else: # For DeepAR
+            self.outputs = np.concatenate(outputs, axis=0)
         self.entity = np.concatenate(entity, axis=0)
         self.time = np.concatenate(time, axis=0)
         self.active_inputs = np.ones_like(outputs)
 
-        self.sampled_data = {
-            "inputs": self.inputs,
-            "outputs": self.outputs[:, self.encoder_steps:, :],
-            "active_entries": np.ones_like(self.outputs[:, self.encoder_steps:, :]),
-            "time": self.time,
-            "identifier": self.entity
-        }
+        # self.sampled_data = {
+        #     "inputs": self.inputs,
+        #     "outputs": self.outputs[:, self.encoder_steps:, :],
+        #     "active_entries": np.ones_like(self.outputs[:, self.encoder_steps:, :]),
+        #     "time": self.time,
+        #     "identifier": self.entity
+        # }
         
     def __getitem__(self, index):
         s = {
